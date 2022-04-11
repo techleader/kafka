@@ -1,4 +1,4 @@
-package com.learning.kafka.config.producer;
+package com.learning.kafka.producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -6,17 +6,21 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import java.util.concurrent.ExecutionException;
+
 public class KafkaProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    private String topicName = "";
+    private String topicName = "kafka-learning";
 
-    public void sendMessage(String msg) {
-        kafkaTemplate.send(topicName, msg);
+    public void sendMessage(String msg) throws Exception{
+        //kafkaTemplate.send(topicName, msg).isDone();
+        //System.out.println("Message sent : "+ msg);
+        sendMessage2(msg);
     }
 
-    public void sendMessage2(String message) {
+    public void sendMessage2(String message) throws ExecutionException, InterruptedException {
 
         ListenableFuture<SendResult<String, String>> future =
                 kafkaTemplate.send(topicName, message);
@@ -34,5 +38,6 @@ public class KafkaProducer {
                         + message + "] due to : " + ex.getMessage());
             }
         });
+        System.out.println(future.isDone());
     }
 }
