@@ -1,6 +1,8 @@
 package com.learning.kafka.consumer;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaListener;
+
 
 public class KafkaConsumer {
 

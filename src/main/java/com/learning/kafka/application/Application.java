@@ -18,13 +18,13 @@ public class Application {
 
        // System.setProperty("kafka.bootstrapAddress",args[0]);
         ApplicationContext context = SpringApplication.run(ApplicationConfig.class,args);
-        KafkaProducer producer = (KafkaProducer) context.getBean("kafkaProducer");
+        /*KafkaProducer producer = (KafkaProducer) context.getBean("kafkaProducer");
         try {
             producer.sendMessage("Hello from Java : " + new Date());
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         System.out.println("----------");
     }
 
