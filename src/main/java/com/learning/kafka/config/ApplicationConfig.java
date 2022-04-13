@@ -6,12 +6,14 @@ import com.learning.kafka.service.PublishMessageService;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @EnableAutoConfiguration
 @Configuration
 @ImportAutoConfiguration({KafkaTopicConfig.class,KafkaProducerConfig.class,KafkaConsumerConfig.class})
+@ComponentScan(basePackages ="com.learning.kafka.rest")
 public class ApplicationConfig {
 
     @Bean
@@ -30,5 +32,7 @@ public class ApplicationConfig {
     public PublishMessageService publishMessageService(){
         return new PublishMessageService();
     }
+
+
 
 }
