@@ -9,7 +9,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.concurrent.ExecutionException;
 
-@Profile("producer")
+
 public class KafkaProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
